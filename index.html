@@ -338,7 +338,6 @@
 
         .piece:hover { transform: scale(1.05); }
 
-        /* Zvýraznění označené figurky (při kliknutí/dotyku) */
         .piece.selected {
             border: 3px solid #ffeb3b !important;
             transform: scale(1.1) !important;
@@ -486,7 +485,7 @@
 
     <div class="title-container">
         <h1 id="txt-title">ratcheckers</h1>
-        <div class="subtitle" id="txt-subtitle">Grandmaster Edition</div>
+        <div class="subtitle" id="txt-subtitle">Bot Edition</div>
     </div>
 
     <!-- LOBBY -->
@@ -518,7 +517,7 @@
                 <select id="difficultySelect" onchange="handleDifficultyChange(event)">
                     <option value="easy" id="opt-easy">Lehká</option>
                     <option value="medium" id="opt-medium">Střední</option>
-                    <option value="hard" id="opt-hard" selected>Těžká (Grandmaster AI)</option>
+                    <option value="hard" id="opt-hard" selected>Těžká (Bot)</option>
                 </select>
             </div>
 
@@ -532,7 +531,7 @@
 
         <!-- BOTOVA LIŠTA -->
         <div class="player-bar">
-            <span>🤖 <span id="lbl-bot-name"> Grandmaster AI</span></span>
+            <span>🤖 <span id="lbl-bot-name"> Bot</span></span>
             <span id="bot-advantage" class="advantage-badge hidden"></span>
         </div>
 
@@ -580,7 +579,7 @@
                 <select id="modalDifficultySelect" onchange="syncDifficulty(this.value)">
                     <option value="easy" id="modal-opt-easy">Lehká</option>
                     <option value="medium" id="modal-opt-medium">Střední</option>
-                    <option value="hard" id="modal-opt-hard" selected>Těžká (Grandmaster AI)</option>
+                    <option value="hard" id="modal-opt-hard" selected>Těžká (Bot)</option>
                 </select>
             </div>
 
@@ -608,7 +607,7 @@
         const translations = {
             cs: {
                 title: "ratcheckers",
-                subtitle: "Grandmaster Edition",
+                subtitle: "Bot Edition",
                 play: "HRÁT DÁMU",
                 language: "JAZYK",
                 settings: "NASTAVENÍ",
@@ -622,7 +621,7 @@
                 difficulty: "Obtížnost:",
                 easy: "Lehká",
                 medium: "Střední",
-                hard: "Těžká (Grandmaster AI)",
+                hard: "Těžká (Bot)",
                 bgMusic: "Pohodová hudba v pozadí:",
                 musicBtnOn: "🎵 Hudba: ZAP",
                 musicBtnOff: "🔇 Hudba: VYP",
@@ -630,13 +629,13 @@
                 undo: "Tah zpět",
                 menu: "Menu",
                 yourTurnDama: "Jsi na řadě (Přetáhni nebo klikni na figurku)",
-                botThinking: "Grandmaster AI hluboce přemýšlí...",
+                botThinking: "Bot hluboce přemýšlí...",
                 chainJump: "⚡ Skoč znovu! (Řetězové braní)",
                 youWin: "🏆 VYHRÁL JSI!",
                 botWins: "🤖 BOT VYHRÁL!",
                 drawGame: "🤝 REMÍZA! (25 tahů bez skoku)",
                 playerName: "Hráč (Černé)",
-                botName: "Grandmaster AI",
+                botName: "Bot",
                 confirmMenu: "Opravdu se chceš vrátit do Menu? Hra bude ukončena.",
                 confirmExit: "Opravdu chceš opustit tuto stránku?",
                 confirmRestartDiff: "Chceš restartovat hru pro uplatnění nové obtížnosti?",
@@ -653,7 +652,7 @@
             },
             en: {
                 title: "ratcheckers",
-                subtitle: "Grandmaster Edition",
+                subtitle: "Bot Edition",
                 play: "PLAY CHECKERS",
                 language: "LANGUAGE",
                 settings: "SETTINGS",
@@ -667,7 +666,7 @@
                 difficulty: "Difficulty:",
                 easy: "Easy",
                 medium: "Medium",
-                hard: "Hard (Grandmaster AI)",
+                hard: "Hard (Bot)",
                 bgMusic: "Lofi Background Music:",
                 musicBtnOn: "🎵 Music: ON",
                 musicBtnOff: "🔇 Music: OFF",
@@ -675,13 +674,13 @@
                 undo: "Undo Move",
                 menu: "Menu",
                 yourTurnDama: "Your turn (Drag or tap black piece)",
-                botThinking: "Grandmaster AI is calculating deep variations...",
+                botThinking: "Bot is calculating deep variations...",
                 chainJump: "⚡ Jump again! (Multi-capture)",
                 youWin: "🏆 YOU WIN!",
                 botWins: "🤖 BOT WINS!",
                 drawGame: "🤝 DRAW! (25 moves without capture)",
                 playerName: "Player (Black)",
-                botName: "Grandmaster AI",
+                botName: "Bot",
                 confirmMenu: "Are you sure you want to return to Menu? Current game will end.",
                 confirmExit: "Are you sure you want to close this page?",
                 confirmRestartDiff: "Do you want to restart the game to apply new difficulty?",
@@ -698,7 +697,7 @@
             },
             ru: {
                 title: "ratcheckers",
-                subtitle: "Grandmaster Edition",
+                subtitle: "Bot Edition",
                 play: "ИГРАТЬ В ШАШКИ",
                 language: "ЯЗЫК",
                 settings: "НАСТРОЙКИ",
@@ -712,7 +711,7 @@
                 difficulty: "Сложность:",
                 easy: "Легкая",
                 medium: "Средняя",
-                hard: "Сложная (Grandmaster AI)",
+                hard: "Сложная (Bot)",
                 bgMusic: "Mузыка на фоне:",
                 musicBtnOn: "🎵 Музыка: ВКЛ",
                 musicBtnOff: "🔇 Музыка: ВЫКЛ",
@@ -720,13 +719,13 @@
                 undo: "Шаг назад",
                 menu: "Меню",
                 yourTurnDama: "Ваш ход (Перетащите или нажмите на шашку)",
-                botThinking: "Грандмейстер AI глубоко просчитывает варианты...",
+                botThinking: "Bot глубоко просчитывает варианты...",
                 chainJump: "⚡ Руби ещё! (Серийное взятие)",
                 youWin: "🏆 ВЫ ПOБЕДИЛИ!",
                 botWins: "🤖 БОТ ПOБЕДИЛ!",
                 drawGame: "🤝 НИЧЬЯ! (25 ходов без взятия)",
                 playerName: "Игрок (Черные)",
-                botName: "Грандмейстер AI",
+                botName: "Bot",
                 confirmMenu: "Вы уверены, что хотите вернуться в Меню? Игра будет завершена.",
                 confirmExit: "Вы действительно хотите закрыть эту страницу?",
                 confirmRestartDiff: "Перезапустить игру для применения новой сложности?",
@@ -1051,7 +1050,6 @@
             }
         }
 
-        // --- GAME INIT & CORE ---
         function initGame() {
             board.innerHTML = '';
             draggedFromRow = null;
@@ -1411,7 +1409,6 @@
             }
         }
 
-        // --- GRANDMASTER ENGINE ---
         const botPosWeights = [
             [ 0,  0,  0,  0,  0,  0,  0,  0], 
             [30,  0, 30,  0, 30,  0, 30,  0], 
