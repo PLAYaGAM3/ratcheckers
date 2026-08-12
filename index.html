@@ -230,7 +230,6 @@
             text-align: center;
         }
 
-        /* Hráčské lišty s indikátorem výhody */
         .player-bar {
             display: flex;
             align-items: center;
@@ -296,6 +295,7 @@
             align-items: center;
             justify-content: center;
             position: relative;
+            cursor: pointer;
         }
 
         .white {
@@ -333,10 +333,17 @@
             align-items: center;
             justify-content: center;
             position: relative;
-            transition: transform 0.15s ease;
+            transition: transform 0.15s ease, border-color 0.2s ease, box-shadow 0.2s ease;
         }
 
         .piece:hover { transform: scale(1.05); }
+
+        /* Zvýraznění označené figurky (při kliknutí/dotyku) */
+        .piece.selected {
+            border: 3px solid #ffeb3b !important;
+            transform: scale(1.1) !important;
+            box-shadow: 0 0 15px #ffeb3b !important;
+        }
 
         .black-piece {
             background: radial-gradient(circle at 50% 50%, #444 0%, #151515 50%, #000 100%);
@@ -489,16 +496,16 @@
                 <span>🔴</span> <span id="btn-play">HRÁT DÁMU</span>
             </button>
             <button class="btn-lobby" onclick="openLanguage()">
-                <span>🌐</span> <span id="btn-language">LANGUAGE</span>
+                <span>🌐</span> <span id="btn-language">JAZYK</span>
             </button>
             <button class="btn-lobby" onclick="openSettings()">
-                <span>⚙</span> <span id="btn-settings">SETTINGS</span>
+                <span>⚙</span> <span id="btn-settings">NASTAVENÍ</span>
             </button>
             <button class="btn-lobby" onclick="openRules()">
-                <span>📜</span> <span id="btn-rules">RULES</span>
+                <span>📜</span> <span id="btn-rules">PRAVIDLA</span>
             </button>
             <button class="btn-lobby" onclick="closeSite()">
-                <span>✕</span> <span id="btn-close">CLOSE SITE</span>
+                <span>✕</span> <span id="btn-close">ZAVŘÍT STRÁNKU</span>
             </button>
         </div>
     </div>
@@ -509,9 +516,9 @@
             <div class="control-group" id="diff-group">
                 <label for="difficultySelect" id="lbl-difficulty">Obtížnost:</label>
                 <select id="difficultySelect" onchange="handleDifficultyChange(event)">
-                    <option value="easy" id="opt-easy">Easy</option>
-                    <option value="medium" id="opt-medium">Medium</option>
-                    <option value="hard" id="opt-hard" selected>Hard (Grandmaster AI)</option>
+                    <option value="easy" id="opt-easy">Lehká</option>
+                    <option value="medium" id="opt-medium">Střední</option>
+                    <option value="hard" id="opt-hard" selected>Těžká (Grandmaster AI)</option>
                 </select>
             </div>
 
@@ -521,7 +528,7 @@
             <button class="btn-small" onclick="returnToLobby()" id="btn-menu">Menu</button>
         </div>
 
-        <div id="status">Jsi na řadě</div>
+        <div id="status">Jsi na řadě (Přetáhni nebo klikni na figurku)</div>
 
         <!-- BOTOVA LIŠTA -->
         <div class="player-bar">
@@ -553,7 +560,7 @@
     <!-- LANGUAGE MODAL -->
     <div id="language-modal" class="modal hidden">
         <div class="modal-content">
-            <h2 id="modal-lang-title">JAZYK / LANGUAGE / ЯЗЫК</h2>
+            <h2 id="modal-lang-title">VYBERTE JAZYK</h2>
             <div class="lang-options">
                 <button class="lang-btn" id="lang-btn-cs" onclick="setLanguage('cs')">🇨🇿 Čeština</button>
                 <button class="lang-btn" id="lang-btn-en" onclick="setLanguage('en')">🇬🇧 English</button>
@@ -571,9 +578,9 @@
             <div class="control-group" style="justify-content: space-between;">
                 <label for="modalDifficultySelect" id="modal-lbl-difficulty">Obtížnost:</label>
                 <select id="modalDifficultySelect" onchange="syncDifficulty(this.value)">
-                    <option value="easy" id="modal-opt-easy">Easy</option>
-                    <option value="medium" id="modal-opt-medium">Medium</option>
-                    <option value="hard" id="modal-opt-hard" selected>Hard (Grandmaster AI)</option>
+                    <option value="easy" id="modal-opt-easy">Lehká</option>
+                    <option value="medium" id="modal-opt-medium">Střední</option>
+                    <option value="hard" id="modal-opt-hard" selected>Těžká (Grandmaster AI)</option>
                 </select>
             </div>
 
@@ -589,7 +596,7 @@
     <!-- RULES MODAL -->
     <div id="rules-modal" class="modal hidden">
         <div class="modal-content">
-            <h2 id="modal-rules-title">PRAVIDLA</h2>
+            <h2 id="modal-rules-title">PRAVIDLA HRY</h2>
             
             <div class="rules-list" id="rules-body"></div>
 
@@ -622,7 +629,7 @@
                 newGame: "Nová hra",
                 undo: "Tah zpět",
                 menu: "Menu",
-                yourTurnDama: "Jsi na řadě (Přetáhni černou figurku)",
+                yourTurnDama: "Jsi na řadě (Přetáhni nebo klikni na figurku)",
                 botThinking: "Grandmaster AI hluboce přemýšlí...",
                 chainJump: "⚡ Skoč znovu! (Řetězové braní)",
                 youWin: "🏆 VYHRÁL JSI!",
@@ -667,7 +674,7 @@
                 newGame: "New Game",
                 undo: "Undo Move",
                 menu: "Menu",
-                yourTurnDama: "Your turn (Drag black piece)",
+                yourTurnDama: "Your turn (Drag or tap black piece)",
                 botThinking: "Grandmaster AI is calculating deep variations...",
                 chainJump: "⚡ Jump again! (Multi-capture)",
                 youWin: "🏆 YOU WIN!",
@@ -693,7 +700,7 @@
                 title: "ratcheckers",
                 subtitle: "Grandmaster Edition",
                 play: "ИГРАТЬ В ШАШКИ",
-                language: "LANGUAGE",
+                language: "ЯЗЫК",
                 settings: "НАСТРОЙКИ",
                 rules: "ПРАВИЛА",
                 close: "ЗАКРЫТЬ",
@@ -712,7 +719,7 @@
                 newGame: "Новая игра",
                 undo: "Шаг назад",
                 menu: "Меню",
-                yourTurnDama: "Ваш ход (Перетащите черную шашку)",
+                yourTurnDama: "Ваш ход (Перетащите или нажмите на шашку)",
                 botThinking: "Грандмейстер AI глубоко просчитывает варианты...",
                 chainJump: "⚡ Руби ещё! (Серийное взятие)",
                 youWin: "🏆 ВЫ ПOБЕДИЛИ!",
@@ -1128,6 +1135,7 @@
                         square.classList.add('black');
                         square.addEventListener('dragover', (e) => e.preventDefault());
                         square.addEventListener('drop', onDrop);
+                        square.addEventListener('click', (e) => onSquareClick(row, col));
 
                         const val = boardLayout[row][col];
                         if (val !== 0) {
@@ -1144,11 +1152,18 @@
                             const canDrag = isPlayer && isPlayerTurn && !gameOver && 
                                 (!activeMultiJumpSquare || (activeMultiJumpSquare.r === row && activeMultiJumpSquare.c === col));
 
+                            if (draggedFromRow === row && draggedFromCol === col) {
+                                piece.classList.add('selected');
+                            }
+
                             if (canDrag) {
                                 piece.setAttribute('draggable', 'true');
                                 piece.addEventListener('dragstart', (e) => onDragStart(e, row, col));
                                 piece.addEventListener('dragend', clearHighlights);
-                                piece.addEventListener('click', () => showPossibleMoves(row, col));
+                                piece.addEventListener('click', (e) => {
+                                    e.stopPropagation();
+                                    onPieceClick(row, col);
+                                });
                             }
 
                             square.appendChild(piece);
@@ -1279,37 +1294,56 @@
             document.querySelectorAll('.possible-move').forEach(el => el.classList.remove('possible-move'));
         }
 
-        function onDragStart(event, r, c) {
+        function selectPiece(r, c) {
             if (activeMultiJumpSquare && (activeMultiJumpSquare.r !== r || activeMultiJumpSquare.c !== c)) {
-                event.preventDefault();
-                return;
+                return false;
             }
 
             let playerMoves = getAllMovesForPlayer(1);
             if (!activeMultiJumpSquare && playerMoves.isCapture) {
                 let canCapture = playerMoves.moves.some(cap => cap.fromR === r && cap.fromC === c);
                 if (!canCapture) {
-                    event.preventDefault();
-                    return;
+                    return false;
                 }
             }
 
             draggedFromRow = r;
             draggedFromCol = c;
+            renderBoard();
             showPossibleMoves(r, c);
+            return true;
+        }
+
+        function onPieceClick(r, c) {
+            if (!isPlayerTurn || gameOver) return;
+            selectPiece(r, c);
+        }
+
+        function onSquareClick(row, col) {
+            if (draggedFromRow === null || !isPlayerTurn || gameOver) return;
+            executeMove(row, col);
+        }
+
+        function onDragStart(event, r, c) {
+            if (!selectPiece(r, c)) {
+                event.preventDefault();
+            }
         }
 
         function onDrop(event) {
             event.preventDefault();
-            clearHighlights();
-
             const square = event.currentTarget;
+            const row = parseInt(square.dataset.row);
+            const col = parseInt(square.dataset.col);
+            executeMove(row, col);
+        }
+
+        function executeMove(row, col) {
+            clearHighlights();
             if (draggedFromRow === null || !isPlayerTurn || gameOver) return;
 
             const prevRow = draggedFromRow;
             const prevCol = draggedFromCol;
-            const row = parseInt(square.dataset.row);
-            const col = parseInt(square.dataset.col);
 
             let pieceMoves = getLegalMovesForPiece(prevRow, prevCol, 1);
             let selectedMove = null;
@@ -1369,8 +1403,11 @@
                     setTimeout(botMove, 50);
                 }
             } else {
-                draggedFromRow = null;
-                draggedFromCol = null;
+                if (boardLayout[row][col] === 0) {
+                    draggedFromRow = null;
+                    draggedFromCol = null;
+                    renderBoard();
+                }
             }
         }
 
